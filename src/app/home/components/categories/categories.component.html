@@ -1,0 +1,74 @@
+<div *ngIf="!miniCategories" class="cat-container">
+    <div class="cat-main" (mouseenter)="openCategories = true" (mouseleave)="openCategories = false">Categories</div>
+    <div class="cat-wrapper" (mouseenter)="openCategories = true" (mouseleave)="openCategories = false"
+        [ngClass]="{'active': openCategories}">
+        <div class="cat-sub-container">
+            <div class="cat-list" #catList>
+                <ul>
+                    <li *ngFor="let item of categoriesList, let i = index; trackBy: trackByFn"
+                        (mouseenter)="getSubCat(item.subClasses, i)">
+                        <span>{{item.mainClass}}</span>
+                        <span class="right-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                                fill="currentColor">
+                                <path d="M0 0h24v24H0z" fill="none" />
+                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+                            </svg>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="sub-cat-list" [ngClass]="{'show':classesList.length}">
+                <ul>
+                    <li *ngFor="let item of classesList" (click)="openPage(item.subClass)">{{item.subClass}}</li>
+                    <span>Hello</span>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="miniCategories" class="mini-cat-container">
+    <button class="mini-cat-main" (click)="isCategoriesOpen = true">All Categories</button>
+    <div class="mini-cat-wrapper" [ngClass]="{'active':isCategoriesOpen}">
+        <div class="mini-cat-list">
+            <div class="mini-header">
+                <span class="back-icon" (click)="isCategoriesOpen = false">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 14 24" width="24px"
+                        fill="currentColor">
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path d="M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z" />
+                    </svg>
+                </span>
+                <span>Categories</span>
+            </div>
+            <ul>
+                <li *ngFor="let item of categoriesList, let i = index"
+                    (click)="getSubCat(item.subClasses, i, item.mainClass)">
+                    <span>{{item.mainClass}}</span>
+                    <span class="right-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                            fill="currentColor">
+                            <path d="M0 0h24v24H0z" fill="none" />
+                            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+                        </svg>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div class="mini-sub-cat-list" #miniSubCatList>
+            <div class="mini-header">
+                <span class="back-icon" (click)="miniSubCatList.classList.remove('active')">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 14 24" width="24px"
+                        fill="currentColor">
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path d="M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z" />
+                    </svg>
+                </span>
+                <span>{{mainClassName}}</span>
+            </div>
+            <ul>
+                <li *ngFor="let item of classesList" (click)="openPage(item.subClass)">{{item.subClass}}</li>
+            </ul>
+        </div>
+    </div>
+</div>

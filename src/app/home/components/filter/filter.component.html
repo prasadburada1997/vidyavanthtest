@@ -1,0 +1,14 @@
+<div class="filter-container">
+    <div class="filter-title">
+        <h4>Filter by</h4>
+        <span>({{results}} results)</span>
+    </div>
+    <div class="filter-list-wrapper">
+        <app-dropdown [menu]="ratingMenu" (menuChange)="onChange($event)"></app-dropdown>
+        <app-dropdown *ngIf="forTuition" [menu]="timeMenu" (menuChange)="onChange($event)"></app-dropdown>
+        <app-dropdown *ngIf="forTuition" [menu]="dayMenu" (menuChange)="onChange($event)"></app-dropdown>
+        <app-dropdown *ngIf="forTuition" [menu]="levelMenu" (menuChange)="onChange($event)"></app-dropdown>
+        <app-dropdown *ngIf="!forTuition" [menu]="priceMenu" (menuChange)="onChange($event)"></app-dropdown>
+        <button class="reset-btn" (click)="handleReset()">Reset</button>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="overlay"></div>
+<div class="report-container">
+    <h2 class="title">Report issue</h2>
+    <div *ngIf="!reportSent">
+        <form #report="ngForm" (ngSubmit)="onSubmit(report)" class="report-body">
+            <p class="message">Flagged content is reviewed by Vidyavanth staff to determine whether it violates Terms of
+                Service or Community Guidelines. If you have a question or technical issue, please contact our
+                <a routerLink="/contact-us">Support team here</a>.
+            </p>
+            <div class="issue-wrapper">
+                <label for="issue">Issue details</label>
+                <textarea name="issue" id="issue" rows="5" required ngModel></textarea>
+            </div>
+            <div class="btn-wrapper">
+                <button type="button" class="cancel-btn btn" (click)="close()">Cancel</button>
+                <button type="button" class="submit-btn btn" [disabled]="!report.valid || report.pristine"
+                    (click)="onSubmit(report)">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div *ngIf="reportSent" class="report-response">
+        <p class="message">Thank you for helping maintain the integrity of our marketplace. We will review your report
+            as soon as possible. As a matter of policy we will only follow up if we require additional information.</p>
+        <button class="ok-btn btn" (click)="close()">OK</button>
+    </div>
+    <button class="close-btn" (click)="close()">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+        </svg>
+    </button>
+</div>

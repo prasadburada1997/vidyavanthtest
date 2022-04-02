@@ -1,0 +1,30 @@
+<div *ngIf="(tuitions && tuitions.length) || (materials && materials.length)" class="carousel-container">
+    <button *ngIf="hasLeftBtn" class="left-btn" (click)="handleLeftClick()" title="Left">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+        </svg>
+    </button>
+    <div class="card-wrapper" [ngClass]="{'materials-card-wrapper': materials && materials.length}" #wrapper>
+        <app-tuition-card *ngFor="let data of tuitionsToDisplay" [cardData]="data"></app-tuition-card>
+        <app-material-card *ngFor="let data of materialsToDisplay" [cardData]="data"></app-material-card>
+        <div *ngIf="(tuitions && tuitions.length > 8) || (materials && materials.length > 9)" class="see-all-wrapper">
+            <button class="see-all-btn" (click)="viewAllClicked()">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                    fill="currentColor">
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                </svg>
+                <span>View All</span>
+            </button>
+        </div>
+    </div>
+    <button *ngIf="hasRightBtn" class="right-btn" (click)="handleRightClick()" title="Right">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+        </svg>
+    </button>
+</div>
+<div *ngIf="tuitions && tuitions.length === 0 && !materials" class="no-tuitions">No tuitions found!</div>
+<div *ngIf="materials && materials.length === 0 && !tuitions" class="no-materials">No materials found!</div>

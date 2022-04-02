@@ -1,0 +1,303 @@
+@import "variables";
+
+.profile-container {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+}
+
+.profile-menu {
+    min-width: 30%;
+
+    .name-wrapper {
+        padding: 1rem 0;
+        text-align: center;
+
+        .avatar {
+            width: 7rem;
+            height: 7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: auto;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-radius: 50%;
+            background-color: $orange-color;
+            color: #fff;
+            border: 1px solid $gray-color-dark;
+        }
+
+        .name {
+            margin-top: 0.5rem;
+            font-weight: bold;
+            text-transform: capitalize;
+        }
+    }
+
+    .menu-wrapper {
+        margin-bottom: 2rem;
+
+        .options {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            input {
+                opacity: 0;
+                height: 0;
+                width: 0;
+                position: absolute;
+
+                &:checked + label {
+                    background-color: $primary-color;
+                    color: #fff;
+                }
+            }
+
+            label,
+            a {
+                padding: 0.5rem 1rem;
+                font-size: 1rem;
+                cursor: pointer;
+                outline: 0;
+                display: block;
+                -webkit-tap-highlight-color: transparent;
+
+                &:hover,
+                &:focus {
+                    background-color: rgba($primary-color, 0.2);
+                }
+            }
+        }
+    }
+}
+
+.profile-wrapper {
+    width: 100%;
+    border: 1px solid $border-color;
+}
+
+.profile-header {
+    text-align: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid $border-color;
+
+    h1 {
+        margin: 0;
+        font-size: 1.75rem;
+    }
+
+    p {
+        margin: 0;
+    }
+}
+
+.basic-profile,
+.academic-profile {
+    margin: 2rem auto;
+    padding: 0 1rem;
+    width: min(24rem, 100%);
+
+    input {
+        border: 0;
+        height: 3rem;
+        outline: 0;
+        padding: 0;
+        font-size: 1rem;
+        width: 100%;
+        flex: 1;
+    }
+
+    label {
+        display: flex;
+        align-items: center;
+        border-radius: 4px;
+        border: 1px solid $gray-color;
+        margin-bottom: 1rem;
+        padding-right: 1rem;
+    }
+
+    select {
+        appearance: none;
+        outline: 0;
+        height: 2.5rem;
+        min-width: 15rem;
+        border-radius: 4px;
+        padding: 0 3rem 0 1rem;
+        border: 1px solid $gray-color;
+        background-color: #fff;
+        cursor: pointer;
+    }
+
+    span[class$="-icon"] {
+        display: flex;
+        width: 3rem;
+        height: 1.5rem;
+        color: $gray-color;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .alert {
+        margin-top: 0.25rem;
+        font-size: $normal-font-size;
+        color: $danger-color;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+}
+
+.state-group,
+.country-group,
+.gender-group,
+.category-group,
+.subcat-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+
+    select {
+        height: 3rem;
+        width: 100%;
+        color: $text-color;
+        font-size: 1rem;
+
+        option:not(:disabled) {
+            color: $text-color;
+        }
+    }
+
+    .down-icon {
+        position: absolute;
+        pointer-events: none;
+        right: 0;
+    }
+}
+
+.subjects-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    > div {
+        position: relative;
+    }
+
+    span {
+        font-size: $normal-font-size;
+    }
+
+    .info {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 0.5rem;
+        padding: 0;
+        outline: 0;
+        border: 0;
+        background: none;
+        color: $primary-color;
+
+        + span {
+            position: absolute;
+            white-space: nowrap;
+            right: 0;
+            background: $primary-color;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            color: #fff;
+            opacity: 0;
+            pointer-events: none;
+            bottom: 50%;
+            transition: all 0.2s ease;
+        }
+
+        &:hover,
+        &:focus {
+            + span {
+                opacity: 1;
+                bottom: 100%;
+            }
+        }
+    }
+
+    textarea {
+        font-family: inherit;
+        padding: 0.5rem;
+        border-radius: 4px;
+        border-color: $gray-color;
+        font-size: 1rem;
+        outline: 0;
+        resize: none;
+    }
+}
+
+.save-btn {
+    margin-top: 1rem;
+    width: 100%;
+    height: 3rem;
+    font-size: 1rem;
+    border: 0;
+    padding: 0;
+    outline: 0;
+    border-radius: 2px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: $primary-color;
+
+    &:disabled {
+        background-color: rgba($primary-color, 0.4);
+        pointer-events: none;
+    }
+
+    &:hover,
+    &:focus {
+        background-color: $primary-color-dark;
+    }
+}
+
+.success {
+    font-size: 1rem;
+    margin: 1rem 0 0;
+    color: $success-color;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+    .profile-container {
+        margin: 2rem 10%;
+        flex-direction: row;
+    }
+
+    .basic-profile,
+    .academic-profile {
+        padding: 0;
+    }
+
+    .profile-menu {
+        border: 1px solid $border-color;
+        border-right: 0;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .profile-container {
+        margin: 2rem 20%;
+    }
+}

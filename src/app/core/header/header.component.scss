@@ -1,0 +1,305 @@
+@import "variables";
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    height: 3.5rem;
+    padding: 0 0.5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
+    z-index: 10;
+}
+
+.left-container,
+.right-container {
+    display: none;
+    height: 100%;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.left-container {
+    flex: 1;
+}
+
+.material-btn,
+.tuition-btn,
+.tutor-btn {
+    display: none;
+    font-weight: bold;
+    color: $primary-color;
+    padding: 0.5rem;
+}
+
+.logo {
+    width: 10rem;
+    height: 60%;
+
+    a {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+
+.categories {
+    display: block;
+}
+
+.login-btn,
+.signup-btn {
+    text-decoration: none;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+    min-width: 6rem;
+    font-size: 0.875rem;
+    border-radius: 4px;
+    font-weight: bold;
+    outline: 0;
+}
+
+.login-btn {
+    background-color: #fff;
+    border: 1px solid $primary-color;
+    color: $primary-color;
+
+    &:hover,
+    &:focus {
+        border-color: $primary-color-dark;
+        color: $primary-color-dark;
+    }
+}
+
+.signup-btn {
+    background: $primary-color;
+    color: #fff;
+
+    &:hover,
+    &:focus {
+        background-color: $primary-color-dark;
+    }
+}
+
+.profile {
+    position: relative;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    text-decoration: none;
+    color: $primary-color;
+
+    .avatar {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        text-transform: uppercase;
+        font-weight: bold;
+        border-radius: 50%;
+        background-color: $orange-color;
+        color: #fff;
+        border: 1px solid $gray-color-dark;
+    }
+
+    .profile-wrapper {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        min-width: 14rem;
+        transform: scaleY(0);
+        opacity: 0;
+        transform-origin: top;
+    }
+
+    .active {
+        opacity: 1;
+        transform: none;
+        transition: all 0.2s ease;
+    }
+
+    .profile-menu {
+        background-color: #fff;
+        margin-top: 0.5rem;
+        box-shadow: 0 2px 4px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 8%);
+        border-radius: 4px;
+        border: 1px solid $border-color;
+        color: $text-color;
+    }
+
+    .detail-avatar {
+        padding: 1rem;
+        border-bottom: 1px solid $border-color;
+        display: flex;
+        gap: 0.75rem;
+        align-items: center;
+
+        .avatar {
+            width: 4rem;
+            height: 4rem;
+            font-size: 1.5rem;
+        }
+    }
+
+    .name-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+
+        .user-name {
+            text-transform: capitalize;
+            font-weight: bold;
+        }
+
+        .email {
+            font-size: $normal-font-size;
+            font-weight: 100;
+            max-width: 8rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
+    .buttons-wrapper {
+        padding-bottom: 0.5rem;
+    }
+
+    .options {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            a {
+                padding: 0.75rem 1rem;
+                display: block;
+            }
+
+            button {
+                padding: 0.75rem 1rem;
+                background: none;
+                width: 100%;
+                text-align: left;
+                font-size: 1rem;
+                border: 0;
+                outline: 0;
+                cursor: pointer;
+            }
+
+            &:hover {
+                background-color: rgba($primary-color, 0.2);
+            }
+        }
+
+        + .options {
+            border-top: 1px solid $border-color;
+        }
+    }
+}
+
+.mobile-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    color: $gray-color-dark;
+}
+
+.search-field {
+    position: relative;
+    display: inline-block;
+    flex: 1;
+}
+
+.notification-btn {
+    background: none;
+    border: 0;
+    border-radius: 50%;
+    height: 3rem;
+    width: 3rem;
+    padding: 0;
+    outline: 0;
+    cursor: pointer;
+    color: $gray-color-dark;
+
+    &:focus,
+    &:hover {
+        background-color: rgba($primary-color, 0.2);
+    }
+
+    &.active {
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            top: 8px;
+            right: 12px;
+            background-color: $danger-color;
+        }
+    }
+}
+
+.mini-search-field {
+    width: 3rem;
+}
+
+.side-bar {
+    z-index: 10;
+    position: relative;
+}
+
+@media screen and (min-width: 768px) {
+    .side-bar {
+        display: none;
+    }
+
+    .header-container {
+        height: 4.5rem;
+        padding: 0 1rem;
+    }
+
+    .left-container,
+    .right-container {
+        display: flex;
+    }
+
+    .mobile-container,
+    .active:is(.overlay, .sidebar) {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .material-btn,
+    .tuition-btn,
+    .tutor-btn {
+        display: inline-block;
+    }
+}

@@ -1,0 +1,60 @@
+@import "variables";
+
+.dropdown-container {
+    position: relative;
+}
+
+.dropdown {
+    background: transparent;
+    border: 1px solid $primary-color;
+    font-size: 1rem;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    border-radius: 2px;
+    text-transform: capitalize;
+    outline: 0;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    color: $primary-color;
+    font-weight: bold;
+
+    & > span:first-child {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.down-icon {
+    display: inline-block;
+    height: 1.5rem;
+}
+
+.options {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    min-width: 100%;
+    list-style: none;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    font-weight: normal;
+    color: $text-color;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgb(20 23 28 / 25%);
+    z-index: 1;
+}
+
+.menu-item {
+    padding: 0.5rem 0.75rem;
+    text-transform: capitalize;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $gray-bg;
+    }
+}

@@ -1,0 +1,42 @@
+@import "variables";
+
+.filter-list-wrapper {
+    display: flex;
+    align-items: center;
+    flex-flow: wrap;
+    gap: 1rem;
+
+    > * {
+        width: 100%;
+    }
+}
+
+.filter-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 1rem;
+
+    h4 {
+        display: inline-block;
+        margin: 0;
+    }
+}
+
+.reset-btn {
+    background: none;
+    border: 0;
+    outline: 0;
+    font-size: $normal-font-size;
+    padding: 0 0.75rem;
+    cursor: pointer;
+    height: 2.5rem;
+    border-radius: 4px;
+    color: $primary-color;
+    font-weight: bold;
+    background-color: rgba($primary-color, 0.1);
+
+    &:hover {
+        background-color: rgba($primary-color, 0.2);
+    }
+}

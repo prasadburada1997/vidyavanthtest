@@ -1,0 +1,36 @@
+.dra-crt{
+    width: 250px;
+    background: linear-gradient(to top, #fe9958, #fb6832);
+}
+.brd{
+    border-bottom: 1px solid #b3b3b3;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.brd.active{
+    border-left: 5px solid;
+    .title{
+        font-size: 18px;
+        font-weight: 500;
+        padding-top: 10px;
+        padding-left: 50px;
+    }
+}
+.title{
+    font-size: 15px;
+    font-weight: 500;
+    padding-top: 10px;
+    padding-left: 30px;
+    color: #ffffff;
+}
+.course-title{
+    border-bottom: 1px solid #838282;
+}
+.example-full-width{
+    width: 100%;
+}
+.course-subtitle{
+    font-size: 14px;
+    font-weight: 400;
+}

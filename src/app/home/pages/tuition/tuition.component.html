@@ -1,0 +1,294 @@
+<app-loader *ngIf="isLoading"></app-loader>
+<div *ngIf="!isLoading" class="tuition-container">
+    <div class="banner" [ngStyle]="{'background-color':bannerColor}">
+        <div class="details">
+            <h1 class="main-title">{{data.title}}</h1>
+            <h4 class="sub-title">{{data.subTitle}}</h4>
+            <div class="rating" *ngIf="data.ratingsCount && isRating()">
+                {{data.averageRating | number:'1.1-2'}}
+                <div class="stars">
+                    <span class="empty">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="80px" height="16px" viewBox="-2.5 0 125 24"
+                            fill="currentColor">
+                            <path
+                                d="M20 9.74L12.81 9.12L10 2.5L7.19 9.13L0 9.74L5.46 14.47L3.82 21.5L10 17.77L16.18 21.5L14.55 14.47L20 9.74ZM10 15.9L6.24 18.17L7.24 13.89L3.92 11.01L8.3 10.63L10 6.6L11.71 10.64L16.09 11.02L12.77 13.9L13.77 18.18L10 15.9Z" />
+                            <path
+                                d="M45 9.74L37.81 9.12L35 2.5L32.19 9.13L25 9.74L30.46 14.47L28.82 21.5L35 17.77L41.18 21.5L39.55 14.47L45 9.74ZM35 15.9L31.24 18.17L32.24 13.89L28.92 11.01L33.3 10.63L35 6.6L36.71 10.64L41.09 11.02L37.77 13.9L38.77 18.18L35 15.9Z" />
+                            <path
+                                d="M70 9.74L62.81 9.12L60 2.5L57.19 9.13L50 9.74L55.46 14.47L53.82 21.5L60 17.77L66.18 21.5L64.55 14.47L70 9.74ZM60 15.9L56.24 18.17L57.24 13.89L53.92 11.01L58.3 10.63L60 6.6L61.71 10.64L66.09 11.02L62.77 13.9L63.77 18.18L60 15.9Z" />
+                            <path
+                                d="M95 9.74L87.81 9.12L85 2.5L82.19 9.13L75 9.74L80.46 14.47L78.82 21.5L85 17.77L91.18 21.5L89.55 14.47L95 9.74ZM85 15.9L81.24 18.17L82.24 13.89L78.92 11.01L83.3 10.63L85 6.6L86.71 10.64L91.09 11.02L87.77 13.9L88.77 18.18L85 15.9Z" />
+                            <path
+                                d="M120 9.74L112.81 9.12L110 2.5L107.19 9.13L100 9.74L105.46 14.47L103.82 21.5L110 17.77L116.18 21.5L114.55 14.47L120 9.74ZM110 15.9L106.24 18.17L107.24 13.89L103.92 11.01L108.3 10.63L110 6.6L111.71 10.64L116.09 11.02L112.77 13.9L113.77 18.18L110 15.9Z" />
+                        </svg>
+                    </span>
+                    <span class="filled" [style.width]="+data.averageRating * 20 + '%'">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="80px" height="16px" viewBox="-2.5 0 125 24"
+                            fill="currentColor">
+                            <path
+                                d="M110 17.77L116.18 21.5L114.54 14.47L120 9.74L112.81 9.13L110 2.5L107.19 9.13L100 9.74L105.46 14.47L103.82 21.5L110 17.77Z" />
+                            <path
+                                d="M85 17.77L91.18 21.5L89.54 14.47L95 9.74L87.81 9.13L85 2.5L82.19 9.13L75 9.74L80.46 14.47L78.82 21.5L85 17.77Z" />
+                            <path
+                                d="M60 17.77L66.18 21.5L64.54 14.47L70 9.74L62.81 9.13L60 2.5L57.19 9.13L50 9.74L55.46 14.47L53.82 21.5L60 17.77Z" />
+                            <path
+                                d="M35 17.77L41.18 21.5L39.54 14.47L45 9.74L37.81 9.13L35 2.5L32.19 9.13L25 9.74L30.46 14.47L28.82 21.5L35 17.77Z" />
+                            <path
+                                d="M10 17.77L16.18 21.5L14.54 14.47L20 9.74L12.81 9.13L10 2.5L7.19 9.13L0 9.74L5.46 14.47L3.82 21.5L10 17.77Z" />
+                        </svg>
+                    </span>
+                </div>
+                ({{data.ratingsCount}})
+            </div>
+            <div *ngIf="!data.ratingsCount || !isRating()" class="rating">No ratings yet</div>
+            <div class="author">
+                <span>Created by </span>
+                <strong>{{data.createdBy}}</strong>
+            </div>
+            <div class="from-to-date">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                        fill="currentColor">
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path
+                            d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z" />
+                    </svg>
+                    <span>{{getDateFromString(data.fromDate) | date:'dd MMMM, yyyy'}}</span>
+                </div>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                        fill="currentColor">
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path
+                            d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z" />
+                    </svg>
+                    <span>{{getDateFromString(data.toDate) | date:'dd MMMM, yyyy'}}</span>
+                </div>
+            </div>
+            <div class="timing-language-created">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                        fill="currentColor">
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path
+                            d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z" />
+                    </svg>
+                    <span>{{(startDate | date:'shortTime') + ' - ' + (endTime | date:'shortTime')}}</span>
+                </div>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                        fill="currentColor">
+                        <path d="M0 0h24v24H0V0z" fill="none" />
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM4 12c0-.61.08-1.21.21-1.78L8.99 15v1c0 1.1.9 2 2 2v1.93C7.06 19.43 4 16.07 4 12zm13.89 5.4c-.26-.81-1-1.4-1.9-1.4h-1v-3c0-.55-.45-1-1-1h-6v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41C17.92 5.77 20 8.65 20 12c0 2.08-.81 3.98-2.11 5.4z" />
+                    </svg>
+                    <span>{{data.language}}</span>
+                </div>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                        fill="currentColor">
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path
+                            d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z" />
+                    </svg>
+                    <span>Created on </span>
+                    <span>{{data.createdOn | date:'dd MMMM, yyyy'}}</span>
+                </div>
+            </div>
+            <div class="btn-wrapper">
+                <button class="share-btn" (click)="handleShareClick()">
+                    <span>Share</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                        fill="currentColor">
+                        <path
+                            d="M23.25 10.75L14.5 2v5C5.75 8.25 2 14.5.75 20.75c3.125-4.375 7.5-6.375 13.75-6.375V19.5l8.75-8.75z">
+                        </path>
+                    </svg>
+                </button>
+                <button *ngIf="!data.feedbackFlag && !hasLeftFromTuition" class="report-btn"
+                    (click)="handleReportClick()">
+                    <span>Report Issue</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                        fill="currentColor">
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z" />
+                    </svg>
+                </button>
+                <button *ngIf="getRatingStatus()" class="rating-btn" (click)="openRatingPopup()">
+                    <span>Give Rating</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                        fill="currentColor">
+                        <path d="M0 0h24v24H0V0z" fill="none" />
+                        <path
+                            d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="thumbnail">
+            <img src="{{data.banner}}" alt="{{data.title}}">
+        </div>
+    </div>
+    <div class="tuition-body">
+        <div class="tuition-detail-card">
+            <div *ngIf="+data.price" class="price">
+                <strong>{{data.price | currency:'INR':'symbol':'1.0-0'}}</strong>
+                <span>({{(data.price * 2) | currency:'INR':'symbol':'1.0-0'}})</span> 50% OFF
+            </div>
+            <div *ngIf="!+data.price" class="price">Free</div>
+            <div *ngIf="!isPurchased" class="seats">
+                <span class="success" *ngIf="(data.maxNoOfStudents-data.noOfStudentsJoined) > 0">
+                    {{data.maxNoOfStudents-data.noOfStudentsJoined}} seats available</span>
+                <span class="danger" *ngIf="data.maxNoOfStudents-data.noOfStudentsJoined < 1">No seats available</span>
+            </div>
+            <div *ngIf="!hasLeftFromTuition && countDownTimer && countDownTimer.total > 0" class="timer">
+                <small>Starts in:</small>
+                <div class="timer-group">
+                    <span>{{countDownTimer.days}}d</span>
+                    <span>{{countDownTimer.hours}}h</span>
+                    <span>{{countDownTimer.minutes}}m</span>
+                    <span>{{countDownTimer.seconds}}s</span>
+                </div>
+            </div>
+            <div *ngIf="isPurchased" class="status" [attr.data-status]="status">{{status}}</div>
+            <button *ngIf="isCancelBtn()" class="cancel-btn" (click)="openConfirmPopup(false)">Leave Tuition</button>
+            <button *ngIf="!isPurchased" [disabled]="isBtnDisabled()" (click)="openConfirmPopup(true)" class="join-btn"
+                [ngClass]="{'loading-btn':btnLoading}">{{joinBtnText}}</button>
+            <span *ngIf="!isPurchased" class="cancel-option">Cancel option available</span>
+            <div class="features">
+                <span class="heading">This tuition includes:</span>
+                <ul>
+                    <li>
+                        <svg height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor">
+                            <path d="M0 0h24v24H0V0z" fill="none" />
+                            <path
+                                d="M21 3H3c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.11-.9-2-2-2zm0 14H3V5h18v12zm-5-6l-7 4V7z" />
+                        </svg>
+                        <span>Live tutoring</span>
+                    </li>
+                    <li>
+                        <svg height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor">
+                            <path d="M0 0h24v24H0z" fill="none" />
+                            <path
+                                d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
+                        </svg>
+                        <span>{{data.notesFlag ? 'Notes will be given' : 'Notes not available'}}</span>
+                    </li>
+                    <li>
+                        <svg height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor">
+                            <path d="M0 0h24v24H0z" fill="none" />
+                            <path
+                                d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
+                        </svg>
+                        <span>Only {{data.maxNoOfStudents}} students are allowed</span>
+                    </li>
+                    <li>
+                        <svg height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor">
+                            <path
+                                d="M20.39 19.37L16.38 18 15 22l-3.08-6L9 22l-1.38-4-4.01 1.37 2.92-6A6.97 6.97 0 015 9a6.999 6.999 0 1114 0c0 1.65-.57 3.17-1.53 4.37l2.92 6zM7 9l2.69 1.34-.19 3 2.5-1.66 2.5 1.65-.17-2.99L17 9l-2.68-1.35.18-2.98L12 6.31 9.5 4.65l.17 3.01L7 9z">
+                            </path>
+                        </svg>
+                        <span>{{data.level}}</span>
+                    </li>
+                    <li>
+                        <svg height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor">
+                            <path d="M0 0h24v24H0z" fill="none" />
+                            <path
+                                d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z" />
+                        </svg>
+                        <span>Access on mobile and desktop</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div *ngIf="!hasLeftFromTuition && isPurchased && data.notesFlag && data.notes" class="notes">
+            <input type="checkbox" name="notes" id="notes">
+            <label for="notes">
+                <h4 class="title">Notes</h4>
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                    fill="currentColor">
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+                </svg>
+            </label>
+            <div class="notes-collection">
+                <div class="note" *ngFor="let item of data.notes.split('|')">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                        fill="currentColor">
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path
+                            d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
+                    </svg>
+                    <a href="{{item.split(',')[1]}}" download="{{item.split(',')[0]}}.pdf"
+                        target="_blank">{{item.split(',')[0]}}</a>
+                    <!-- <span>5:30 PM, 18 May, 2021</span> -->
+                </div>
+            </div>
+        </div>
+        <div class="will-learn" *ngIf="data.willLearn">
+            <h4 class="title">What you'll learn</h4>
+            <ul>
+                <li *ngFor="let item of data.willLearn.split('|')">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                        fill="currentColor">
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" />
+                    </svg>
+                    <span>{{item}}</span>
+                </li>
+            </ul>
+        </div>
+        <div class="week-offs">
+            <h4 class="title">Tuition Days:</h4>
+            <div class="days-wrapper">
+                <span *ngFor="let day of weekOffs" [ngClass]="{'disabled':day.disabled}">{{day.name}}</span>
+            </div>
+        </div>
+        <div *ngIf="data.holidays" class="holidays">
+            <h4 class="title">Holidays:</h4>
+            <div class="holiday-list">
+                <div *ngFor="let day of data.holidays.split('|')" title="{{day.split(',')[1] | titlecase}}"
+                    class="holiday-card">
+                    <strong>{{getDateFromString(day.split(',')[0]) | date:'dd MMMM, yyyy'}}</strong>
+                    ({{day.split(',')[1]}})
+                </div>
+            </div>
+        </div>
+        <div *ngIf="data.schedule" class="schedule-container">
+            <h4 class="title">Schedule:</h4>
+            <div class="table-wrapper">
+                <table class="schedule">
+                    <tr>
+                        <th>Topic No</th>
+                        <th>Topic Name</th>
+                        <th>From Date</th>
+                        <th>To Date</th>
+                    </tr>
+                    <tr *ngFor="let item of data.schedule">
+                        <td>{{item.serialNo}}</td>
+                        <td>{{item.topicName}}</td>
+                        <td>{{getDateFromString(item.fromDate) | date:'dd MMMM, yyyy'}}</td>
+                        <td>{{getDateFromString(item.toDate) | date:'dd MMMM, yyyy'}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="description">
+            <h4 class="title">Description:</h4>
+            <p class="desc-text">{{data.description}}</p>
+        </div>
+        <div class="for-whom" *ngIf="data.forWhom">
+            <h4 class="title">Who this tuition is for:</h4>
+            <ul class="for-whom-text">
+                <li *ngFor="let text of data.forWhom.split('|')">{{text}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<app-popup *ngIf="joinPopup" [isTuition]="true" (onConfirm)="joinTuition()" (closePopup)="closePopup()"></app-popup>
+<app-popup *ngIf="leavePopup" [isCancel]="true" (onConfirm)="leaveTuition()" (closePopup)="closePopup()"></app-popup>
+<app-share *ngIf="sharePopup" [title]="data.title" [url]="data.url" [isTuition]="true" (closePopup)="closePopup()">
+</app-share>
+<app-report *ngIf="reportPopup" (issueSubmit)="reportTuition($event)" (closePopup)="closePopup()"></app-report>
+<app-rating *ngIf="ratingPopup" [isTuition]="true" (onSubmitRating)="feedbackTuition($event)"
+    (closePopup)="closePopup()"></app-rating>

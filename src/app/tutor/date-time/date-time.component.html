@@ -1,0 +1,173 @@
+<mat-drawer-container class="example-container" style="background-color: #eeeeee;">
+    <mat-drawer mode="side" opened class="dra-crt">
+        <app-tutor-sidenav></app-tutor-sidenav>
+    </mat-drawer>
+    <mat-drawer-content>
+        <div class="p-4">
+            <mat-card>
+                <mat-card-title class="course-title p-3">Dates & timings</mat-card-title>
+                <div class="p-3">
+                    <div class="pt-4">
+                        <div class="pt-3 pb-2">
+                            <span class="course-titles">What students will learn in your tuition? </span>
+                        </div>
+                        <div fxLayout="row wrap">
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50" class="pl-2 pr-2">
+                                <mat-form-field  class="example-full-width" appearance="outline">
+                                    <input matInput [matDatepicker]="picker">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                            </div>     
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50" class="pl-2 pr-2">
+                                <mat-form-field  class="example-full-width" appearance="outline">
+                                    <input matInput [matDatepicker]="picker1">
+                                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker1></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    
+                        <div class="pb-2">
+                            <span class="course-titles">What students will learn in your tuition? </span>
+                        </div>
+                        <div fxLayout="row wrap">
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50" class="pl-2 pr-2">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <input matInput #message maxlength="256" placeholder="Insert">
+                                    <span matSuffix class="input_count">{{message.value.length}} / 256</span>                                </mat-form-field>
+                            </div>     
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50" class="pl-2 pr-2">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <input matInput #message maxlength="256" placeholder="Insert">
+                                    <span matSuffix class="input_count">{{message.value.length}} / 256</span>                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row wrap">
+                        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50" class="pl-2 pr-2">
+                            <mat-form-field class="example-full-width" appearance="outline">
+                                <input matInput #message maxlength="256" placeholder="Insert">
+                                <span matSuffix class="input_count">{{message.value.length}} / 256</span>                            </mat-form-field>
+                        </div>     
+                        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50" class="pl-2 pr-2">
+                            <mat-form-field class="example-full-width" appearance="outline">
+                                <input matInput #message maxlength="256" placeholder="Insert">
+                                <span matSuffix class="input_count">{{message.value.length}} / 256</span>                            </mat-form-field>
+                        </div>
+                    </div>
+
+
+                    <div class="pt-1" >
+                        <div>
+                            <span class="course-titles">Tuition days </span>
+                        </div>
+                        <div fxLayout="row wrap" class="pt-2">
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="12" fxFlex.lg="12" fxFlex.xl="12" class="pl-2 pr-2">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <input matInput placeholder="Insert">
+                                </mat-form-field>
+                            </div>    
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="12" fxFlex.lg="12" fxFlex.xl="12" class="pl-2 pr-2">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <input matInput placeholder="Insert">
+                                </mat-form-field>
+                            </div>   
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="12" fxFlex.lg="12" fxFlex.xl="12" class="pl-2 pr-2">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <input matInput placeholder="Insert">
+                                </mat-form-field>
+                            </div>    
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="12" fxFlex.lg="12" fxFlex.xl="12" class="pl-2 pr-2">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <input matInput placeholder="Insert">
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="12" fxFlex.lg="12" fxFlex.xl="12" class="pl-2 pr-2">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <input matInput placeholder="Insert">
+                                </mat-form-field>
+                            </div>    
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="12" fxFlex.lg="12" fxFlex.xl="12" class="pl-2 pr-2">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <input matInput placeholder="Insert">
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="12" fxFlex.lg="12" fxFlex.xl="12" class="pl-2 pr-2">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <input matInput placeholder="Insert">
+                                </mat-form-field>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="pt-1" >
+                        <div>
+                            <span class="course-titles">WeekOffs </span>
+                        </div>
+                        <div fxLayout="row wrap" class="pt-2">
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="12" fxFlex.lg="12" fxFlex.xl="12" class="pl-2 pr-2">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <input matInput placeholder="Insert">
+                                </mat-form-field>
+                            </div>    
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="12" fxFlex.lg="12" fxFlex.xl="12" class="pl-2 pr-2">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <input matInput placeholder="Insert">
+                                </mat-form-field>
+                            </div>   
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="12" fxFlex.lg="12" fxFlex.xl="12" class="pl-2 pr-2">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <input matInput placeholder="Insert">
+                                </mat-form-field>
+                            </div>    
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="12" fxFlex.lg="12" fxFlex.xl="12" class="pl-2 pr-2">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <input matInput placeholder="Insert">
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="12" fxFlex.lg="12" fxFlex.xl="12" class="pl-2 pr-2">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <input matInput placeholder="Insert">
+                                </mat-form-field>
+                            </div>    
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="12" fxFlex.lg="12" fxFlex.xl="12" class="pl-2 pr-2">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <input matInput placeholder="Insert">
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="12" fxFlex.lg="12" fxFlex.xl="12" class="pl-2 pr-2">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <input matInput placeholder="Insert">
+                                </mat-form-field>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="pt-1" >
+                        <div>
+                            <span class="course-titles">WeekOffs </span>
+                        </div>
+                        <div fxLayout="row wrap" class="pt-2">
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="70" fxFlex.lg="70" fxFlex.xl="70" class="pl-2 pr-2">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <input matInput placeholder="Insert">
+                                    <mat-icon matSuffix>search</mat-icon>
+                                </mat-form-field>
+                            </div>    
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="30" fxFlex.lg="30" fxFlex.xl="30" class="pl-2 pr-2">
+                                <mat-form-field  class="example-full-width" appearance="outline">
+                                    <input matInput [matDatepicker]="picker2">
+                                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker2></mat-datepicker>
+                                </mat-form-field>
+                            </div>   
+                        </div> 
+                    </div>
+                </div>
+                <div class="center">
+                    <button mat-button class="tutor-btn">Get in touch</button>
+                </div>
+            </mat-card>
+        </div>    
+    </mat-drawer-content>
+</mat-drawer-container>

@@ -1,0 +1,56 @@
+@import "variables";
+
+.view-all-container {
+    position: relative;
+}
+
+.title {
+    margin: 0;
+    padding: 1rem;
+    color: #fff;
+    background-color: $blue-color-dark;
+    text-transform: capitalize;
+}
+
+.view-all-body {
+    padding: 1rem 1rem 0;
+}
+
+.error-container {
+    margin: 8rem auto;
+    text-align: center;
+
+    svg {
+        height: 3rem;
+        width: 3rem;
+        color: $danger-color;
+    }
+
+    h1 {
+        margin: 0.5rem 0 3rem;
+        font-size: 1.5rem;
+    }
+
+    a {
+        color: $primary-color;
+        font-weight: bold;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        background-color: rgba($primary-color, 0.1);
+
+        &:hover,
+        &:focus {
+            background-color: rgba($primary-color, 0.2);
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .title {
+        padding: 2rem 8%;
+    }
+
+    .view-all-body {
+        padding: 2rem 8% 0;
+    }
+}

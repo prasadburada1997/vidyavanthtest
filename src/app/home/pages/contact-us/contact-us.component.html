@@ -1,0 +1,53 @@
+<app-loader *ngIf="isLoading"></app-loader>
+<div [hidden]="isLoading" class="contact-container">
+    <h1 class="title">Contact Us</h1>
+    <div class="contact-body">
+        <div class="image-wrapper">
+            <img *ngIf="!isLogin" src="assets/contact-us-1.jpg" alt="Contact us" (load)="isLoading=false">
+            <img *ngIf="isLogin" src="assets/contact-us-2.jpg" alt="Contact us" (load)="isLoading=false">
+        </div>
+        <div class="form-wrapper">
+            <form (ngSubmit)="onContactSubmit(contactUs)" #contactUs="ngForm" ngNativeValidate autocomplete="off">
+                <div class="dropdown-group">
+                    <select *ngIf="!isLogin" name="type" id="type" required ngModel>
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="student">I am a student</option>
+                        <option value="tutor">I am a tutor</option>
+                    </select>
+                    <select *ngIf="isLogin" name="type" id="type" required ngModel>
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="suggestion">Suggestion</option>
+                        <option value="feedback">Feedback</option>
+                        <option value="issue">Issue</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <span class="down-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                            fill="currentColor">
+                            <path d="M0 0h24v24H0z" fill="none" />
+                            <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+                        </svg>
+                    </span>
+                </div>
+                <div class="message-group">
+                    <textarea name="message" id="message" rows="5" placeholder="Enter your message here" required
+                        ngModel></textarea>
+                </div>
+                <button type="submit" class="send-btn" [ngClass]="{'loading-btn':isBtnClicked}"
+                    [disabled]="!contactUs.form.valid || !contactUs.form.dirty">Send</button>
+            </form>
+            <h5 *ngIf="success" class="success">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                    fill="currentColor">
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                </svg>
+                <span>Message sent successfully!</span>
+            </h5>
+        </div>
+    </div>
+    <span class="divider">OR</span>
+    <span class="email">Write to us at <a href="mailto:contact.vidyavanth@gmail.com" target="_blank"
+            rel="noopener noreferrer">contact.vidyavanth@gmail.com</a></span>
+</div>

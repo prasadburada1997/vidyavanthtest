@@ -1,0 +1,219 @@
+<app-loader *ngIf="isLoading"></app-loader>
+<div [hidden]="isLoading" class="homepage">
+    <div *ngIf="!isLogin" class="new-user">
+        <div class="banner">
+            <img src="{{newBanner}}" alt="main banner">
+            <div class="header-card container">
+                <h1 class="heading">Title of the page</h1>
+                <p class="sub-heading">Subtitle text to be added here to provide more details</p>
+                <app-search class="home-search-field" [homeSearch]="true"></app-search>
+            </div>
+        </div>
+        <div *ngIf="academic" class="categories-container container">
+            <div class="header">
+                <h1 class="title">Recent Academic Tuitions</h1>
+            </div>
+            <div class="cat-sub-wrapper">
+                <div *ngIf="academic.length" class="header">
+                    <div class="tab-container">
+                        <div class="top-tab" *ngFor="let item of academic; index as i">
+                            <input type="radio" name="academic" id="{{item.category}}"
+                                (change)="changeCategory(item, 1)" [checked]="i===0">
+                            <label for="{{item.category}}">{{item.category}}</label>
+                        </div>
+                    </div>
+                </div>
+                <app-carousel [title]="selectedAcademic.category" [tuitions]="selectedAcademic.tutions"></app-carousel>
+            </div>
+        </div>
+        <div *ngIf="entrance" class="categories-container container">
+            <div class="header">
+                <h1 class="title">Recent Entrance Exam Oriented Tuitions</h1>
+            </div>
+            <div class="cat-sub-wrapper">
+                <div *ngIf="entrance.length" class="header">
+                    <div class="tab-container">
+                        <div class="top-tab" *ngFor="let item of entrance; index as i">
+                            <input type="radio" name="entrance" id="{{item.category}}"
+                                (change)="changeCategory(item, 2)" [checked]="i===0">
+                            <label for="{{item.category}}">{{item.category}}</label>
+                        </div>
+                    </div>
+                </div>
+                <app-carousel [title]="selectedEntrance.category" [tuitions]="selectedEntrance.tutions"></app-carousel>
+            </div>
+        </div>
+        <div *ngIf="job" class="categories-container container">
+            <div class="header">
+                <h1 class="title">Recent Job Oriented Tuitions</h1>
+            </div>
+            <div class="cat-sub-wrapper">
+                <div *ngIf="job.length" class="header">
+                    <div class="tab-container">
+                        <div class="top-tab" *ngFor="let item of job; index as i">
+                            <input type="radio" name="job" id="{{item.category}}" (change)="changeCategory(item, 3)"
+                                [checked]="i===0">
+                            <label for="{{item.category}}">{{item.category}}</label>
+                        </div>
+                    </div>
+                </div>
+                <app-carousel [title]="selectedJob.category" [tuitions]="selectedJob.tutions"></app-carousel>
+            </div>
+        </div>
+        <div class="features-container container" id="features">
+            <div class="header">
+                <h1 class="title">What's in it for you?</h1>
+            </div>
+            <div class="tab-wrapper">
+                <ul>
+                    <li>
+                        <input type="radio" name="tab" id="student-tab" (change)="isStudentToggle=true" checked>
+                        <label for="student-tab">Students</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="tab" id="tutor-tab" (change)="isStudentToggle=false">
+                        <label for="tutor-tab">Tutors</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="features-body">
+                <section [hidden]="!isStudentToggle">
+                    <div class="content-wrapper">
+                        <div class="content">
+                            <img src="assets/staysafe-and-learn.png" alt="Stay safe & learn">
+                            <h2>Stay safe & learn</h2>
+                            <p>Because of this pandemic situation, it’s better to go for online tuitions instead of
+                                general.
+                                Stay safe and keep learning.</p>
+                        </div>
+                        <div class="content">
+                            <img src="assets/learn-from-anywhere.png" alt="Learn from anywhere">
+                            <h2>Learn from anywhere</h2>
+                            <p>Students can access the tuitions from anywhere through internet. This will save time and
+                                makes learn more.</p>
+                        </div>
+                        <div class="content">
+                            <img src="assets/live-tuitions.png" alt="Live tuitions">
+                            <h2>Live tuitions</h2>
+                            <p>Students can directly interact with tutors as they teach in live mode, which will give
+                                great
+                                experience in learning.</p>
+                        </div>
+                    </div>
+                </section>
+                <section [hidden]="isStudentToggle">
+                    <div class="content-wrapper">
+                        <div class="content">
+                            <img src="assets/teach-from-anywhere.png" alt="Teach from anywhere">
+                            <h2>Teach from anywhere</h2>
+                            <p>Tutors can teach from anywhere and can schedule tuitions as per your free time and
+                                schedule.
+                            </p>
+                        </div>
+                        <div class="content">
+                            <img src="assets/earn-money.png" alt="Earn money">
+                            <h2>Earn money</h2>
+                            <p>Earn money through what you teach. Your free time teaching will boot your income.</p>
+                        </div>
+                        <div class="content">
+                            <img src="assets/expand-your-reach.png" alt="Expand your reach">
+                            <h2>Expand your reach</h2>
+                            <p>Reach more students through online live tuition. Share knowledge and expand your growth.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="signup-container container">
+            <div>
+                <h1>Teach on Vidyavanth</h1>
+                <a routerLink="/signup" [queryParams]="{ isTutor: true }">Sign Up</a>
+            </div>
+        </div>
+        <div class="slideshow-container container">
+            <div class="slideshow">
+                <div class="image-wrapper">
+                    <img src="assets/transform-1.svg" alt="Transform your life through learning">
+                </div>
+                <div class="image-wrapper">
+                    <img src="assets/transform-2.svg" alt="Transform your life through learning">
+                </div>
+            </div>
+            <div class="header">
+                <h1 class="title">Transform your life through learning</h1>
+                <p>With today’s growing world, everyone should equip more knowledge by learning and sharing, which will
+                    enable the growth in personal career and growth of nation. Technology enables to share knowledge and
+                    gain knowledge from anywhere, from anyone.</p>
+            </div>
+        </div>
+        <div>
+    </div>
+    <div *ngIf="isLogin" class="user">
+        <div class="banner">
+            <img src="{{banner}}" alt="main banner">
+        </div>
+        <div *ngIf="tuitions" class="tuitions-container container">
+            <div class="header">
+                <h1 class="tuitions-title title">Tuitions for you</h1>
+            </div>
+            <app-carousel [title]="'Tuitions for you'" [tuitions]="tuitions"></app-carousel>
+        </div>
+        <div *ngIf="categories" class="categories-container container">
+            <h1 class="categories-title title">Best Categories</h1>
+            <div class="cat-sub-wrapper">
+                <div *ngIf="categories.length" class="header">
+                    <div class="tab-container">
+                        <div class="top-tab" *ngFor="let item of categories; index as i">
+                            <input type="radio" name="category" id="{{item.category}}"
+                                (change)="changeCategory(item, 4)" [checked]="i===0">
+                            <label for="{{item.category}}">{{item.category}}</label>
+                        </div>
+                    </div>
+                </div>
+                <app-carousel [title]="selectedCategory.category" [tuitions]="selectedCategory.tutions"></app-carousel>
+            </div>
+        </div>
+        <div *ngIf="materials" class="materials-container container">
+            <div class="header">
+                <h1 class="materials-title title">Materials for you</h1>
+            </div>
+            <app-carousel [title]="'Materials for you'" [materials]="materials"></app-carousel>
+        </div>
+        <div *ngIf="showAcademicPopup" class="academic-popup">
+            <form (ngSubmit)="onAcademicSubmit(academic)" #academic="ngForm" ngNativeValidate autocomplete="off">
+                <h5>Please select your field of interest</h5>
+                <span>You can change the category in <strong>Academic Profile</strong></span>
+                <div class="dropdown-group">
+                    <select name="categoryName" id="categoryName" required [(ngModel)]="categoryName"
+                        (change)="changeSubCategories(categoryName)">
+                        <option value="" disabled>Select Main Category</option>
+                        <option *ngFor="let item of categoryList" value="{{item.mainClass}}">{{item.mainClass}}</option>
+                    </select>
+                    <span class="down-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                            fill="currentColor">
+                            <path d="M0 0h24v24H0z" fill="none" />
+                            <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+                        </svg>
+                    </span>
+                </div>
+                <div class="dropdown-group">
+                    <select name="classId" id="classId" required [(ngModel)]="classId">
+                        <option value="null" disabled>Select Sub Category</option>
+                        <option *ngFor="let item of subcatList" value="{{+item.classId}}">{{item.subClass}}</option>
+                    </select>
+                    <span class="down-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                            fill="currentColor">
+                            <path d="M0 0h24v24H0z" fill="none" />
+                            <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+                        </svg>
+                    </span>
+                </div>
+                <button type="submit" class="save-btn" [ngClass]="{'loading-btn':isBtnClicked}"
+                    [disabled]="!academic.form.valid || !academic.form.dirty">Save</button>
+            </form>
+        </div>
+    </div>
+</div>

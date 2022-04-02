@@ -1,0 +1,13 @@
+<div class="category-container">
+    <h1 class="title">{{title}}</h1>
+    <div class="category-body">
+        <div class="tab-wrapper">
+            <input type="radio" name="tab" id="tuition" checked (change)="isTuition = true">
+            <label for="tuition">Tuitions</label>
+            <input type="radio" name="tab" id="material" (change)="isTuition = false">
+            <label for="material">Materials</label>
+        </div>
+        <app-my-tuitions [hidden]="!isTuition" [tuitionList]="tuitionList"></app-my-tuitions>
+        <app-my-materials [hidden]="isTuition" [materialList]="materialList"></app-my-materials>
+    </div>
+</div>

@@ -1,0 +1,200 @@
+@import "variables";
+
+.footer-container {
+    padding: 3rem 1rem 1rem;
+    border-top: 1px solid $gray-color;
+    margin-top: 3rem;
+}
+
+.logo {
+    width: min(100%, 20rem);
+    display: block;
+    margin: 0 auto 1rem;
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.playstore {
+    text-align: center;
+
+    span {
+        font-size: $normal-font-size;
+        display: block;
+    }
+
+    a {
+        display: inline-block;
+        margin-top: 0.5rem;
+
+        svg {
+            width: 10rem;
+        }
+    }
+}
+
+.links {
+    text-align: left;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 2rem;
+    position: relative;
+
+    h5 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+}
+
+.in-dev {
+    position: relative;
+
+    &::before {
+        content: "";
+        display: none;
+        position: absolute;
+        width: 0.75rem;
+        height: 0.75rem;
+        background: $primary-color-dark;
+        top: 0;
+        left: 1rem;
+        transform: rotate(45deg);
+    }
+
+    &::after {
+        content: "Under development";
+        display: none;
+        position: absolute;
+        font-size: $small-font-size;
+        font-weight: normal;
+        background: $primary-color-dark;
+        color: #fff;
+        padding: 0 0.75rem;
+        border-radius: 4px;
+        bottom: 80%;
+        left: 0;
+        height: 1.5rem;
+        line-height: 1.5rem;
+    }
+
+    &:hover,
+    &:focus {
+        &::before,
+        &::after {
+            display: inline-block;
+        }
+    }
+}
+
+.column {
+    margin-bottom: 2rem;
+
+    h5 {
+        margin: 0;
+        font-size: 1.25rem;
+        text-align: center;
+    }
+
+    p {
+        margin: 0.75rem 0;
+        font-size: $normal-font-size;
+        text-align: center;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 1rem 0 0;
+        display: flex;
+        justify-content: space-evenly;
+
+        a {
+            display: block;
+        }
+
+        svg {
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+    }
+}
+
+.left,
+.right {
+    a {
+        display: block;
+        padding: 0.75rem 0;
+        color: $primary-color;
+        font-weight: bold;
+        cursor: pointer;
+    }
+}
+
+.right h5 {
+    display: none;
+}
+
+.copyright {
+    padding: 1rem;
+    text-align: center;
+    font-size: $normal-font-size;
+    background-color: $primary-color;
+    color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+    .footer-container {
+        padding: 3rem 8%;
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+
+        .column {
+            margin: 0;
+
+            ul {
+                justify-content: space-between;
+                gap: 1rem;
+            }
+        }
+
+        .links {
+            flex-direction: column;
+
+            h5 {
+                text-align: left;
+            }
+        }
+    }
+
+    .logo {
+        width: 12rem;
+    }
+
+    .playstore {
+        text-align: left;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .footer-container {
+        .links {
+            width: 50%;
+            flex-direction: row;
+            justify-content: space-around;
+
+            h5 {
+                display: block;
+                left: unset;
+            }
+        }
+    }
+
+    .logo {
+        width: 15rem;
+    }
+}

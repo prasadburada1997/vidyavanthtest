@@ -1,0 +1,245 @@
+@import "variables";
+
+.search-wrapper {
+    display: none;
+    height: 3rem;
+    border: 1px solid $gray-color;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    padding-right: 0.5rem;
+    width: min(100%, 45rem);
+}
+
+.mini-search {
+    width: 100vw;
+    height: 3.5rem;
+    display: flex;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    align-items: center;
+    background: #fff;
+
+    &:not(.active) input {
+        opacity: 0;
+    }
+
+    &.active {
+        padding: 0 0.5rem;
+        transform: translateX(calc(3.5rem - 100%));
+        border-bottom: 1px solid $border-color;
+    }
+}
+
+.home-search {
+    label {
+        height: 2.5rem;
+        border: 1px solid $gray-color;
+        border-radius: 4px;
+        display: flex;
+        justify-content: space-between;
+        padding-left: 1rem;
+        background: #fff;
+        width: 100%;
+    }
+
+    input {
+        padding: 0;
+        font-size: 1rem;
+        flex: 1;
+        border: 0;
+        outline: 0;
+        height: 100%;
+    }
+
+    svg {
+        color: $gray-color;
+        height: 100%;
+        width: 1.25em;
+        margin: 0 0.5rem;
+    }
+}
+
+.type-toggle {
+    display: flex;
+
+    input {
+        opacity: 0;
+        height: 0;
+        width: 0;
+        position: absolute;
+
+        &:checked + label {
+            color: $primary-color;
+        }
+    }
+}
+
+.mini-search .type-toggle label {
+    width: 3rem;
+}
+
+.search-icon,
+.tuition-icon,
+.material-icon,
+.close-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    color: $gray-color-dark;
+}
+
+.material-icon,
+.tuition-icon {
+    width: 2rem;
+    color: $gray-color-light;
+    cursor: pointer;
+}
+
+input {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    height: 100%;
+    width: 100%;
+    font-size: $normal-font-size;
+}
+
+.input-wrapper,
+.mini-input-wrapper {
+    height: 100%;
+    flex: 1;
+}
+
+.mini-search:not(.active) ~ .results-wrapper {
+    transform: scaleY(0);
+}
+
+.mini-search.active ~ .mini-overlay {
+    display: block;
+}
+
+.mini-overlay {
+    display: none;
+    position: fixed;
+    background: #fff;
+    top: 3.5rem;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 4.5rem;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.results-wrapper {
+    position: absolute;
+    border: 1px solid $border-color;
+    white-space: nowrap;
+    height: calc(100vh - 4rem);
+    width: 100vw;
+    overflow: auto;
+    top: 105%;
+    left: 0;
+    border-radius: 4px;
+    padding: 0.5rem 0;
+    background-color: #fff;
+    transform: scaleY(0);
+    transform-origin: top center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+    &.show {
+        transition: all 0.2s ease;
+        transform: none;
+    }
+}
+
+.search-result {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    height: 2.5rem;
+    padding: 0 1rem;
+    border: 0;
+    outline: 0;
+    width: 100%;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+
+    span {
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+    }
+
+    svg {
+        color: $gray-color;
+    }
+
+    &:hover,
+    &:focus {
+        background-color: rgba($primary-color, 0.2);
+    }
+}
+
+.no-results {
+    position: absolute;
+    left: 0;
+    top: 105%;
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+    .results-wrapper {
+        height: auto;
+        max-height: 80vh;
+        width: min(100%, 45rem);
+    }
+
+    .search-wrapper {
+        display: flex;
+
+        &.active ~ .overlay {
+            display: block;
+        }
+    }
+
+    .home-search {
+        &.active ~ .overlay {
+            display: block;
+            z-index: -1;
+        }
+
+        ~ .results-wrapper {
+            max-height: 20rem;
+        }
+    }
+
+    .mini-search {
+        display: none;
+    }
+
+    .no-results {
+        height: 10rem;
+        border: 1px solid $border-color;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+}

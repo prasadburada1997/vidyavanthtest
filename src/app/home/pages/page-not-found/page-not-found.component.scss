@@ -1,0 +1,25 @@
+@import "variables";
+
+.page-not-found-wrapper {
+    text-align: center;
+
+    img {
+        padding: 4rem 8%;
+        width: min(100%, 60rem);
+        display: block;
+        margin: auto;
+    }
+
+    a {
+        font-weight: bold;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        background: $primary-color;
+        border-radius: 4px;
+
+        &:hover,
+        &:focus {
+            background: $primary-color-dark;
+        }
+    }
+}

@@ -1,0 +1,204 @@
+<section class="profile-container">
+    <div class="profile-menu">
+        <div class="name-wrapper">
+            <div class="avatar">{{initials}}</div>
+            <div class="name">{{fullname}}</div>
+        </div>
+        <div class="menu-wrapper">
+            <ul class="options">
+                <li>
+                    <input type="radio" name="profile" id="basic" (change)="onMenuChange('basic')" checked>
+                    <label for="basic">Basic Profile</label>
+                </li>
+                <li>
+                    <input type="radio" name="profile" id="academic" (change)="onMenuChange('academic')">
+                    <label for="academic">Academic Profile</label>
+                </li>
+                <li>
+                    <input type="radio" name="profile" id="pass" (change)="onMenuChange('pass')">
+                    <label for="pass">Change Password</label>
+                </li>
+                <li>
+                    <input type="radio" name="profile" id="email" (change)="onMenuChange('email')">
+                    <label for="email">Change Email</label>
+                </li>
+                <li>
+                    <input type="radio" name="profile" id="phone" (change)="onMenuChange('phone')">
+                    <label for="phone">Change Phone</label>
+                </li>
+                <li>
+                    <a routerLink="/privacy-policy">Privacy Policy</a>
+                </li>
+                <li>
+                    <a routerLink="/terms-conditions">Terms & Conditions</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="profile-wrapper">
+        <div class="profile-header">
+            <h1>{{title}}</h1>
+            <p>{{subtitle}}</p>
+        </div>
+        <div *ngIf="selectedMenu=='basic'" class="basic-profile">
+            <form (ngSubmit)="onSubmit(profile)" #profile="ngForm" ngNativeValidate autocomplete="off">
+                <div class="name-group">
+                    <label for="firstName">
+                        <span class="name-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                                fill="currentColor">
+                                <path d="M0 0h24v24H0z" fill="none" />
+                                <path
+                                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                            </svg>
+                        </span>
+                        <input type="text" name="firstName" id="firstName" placeholder="First name" required
+                            [(ngModel)]="firstName" #fname="ngModel">
+                    </label>
+                    <div class="alert" [hidden]="fname.valid || fname.pristine">First name cannot be left blank!
+                    </div>
+                    <label for="lastName">
+                        <span class="name-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                                fill="currentColor">
+                                <path d="M0 0h24v24H0z" fill="none" />
+                                <path
+                                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                            </svg>
+                        </span>
+                        <input type="text" name="lastName" id="lastName" placeholder="Last name" required
+                            [(ngModel)]="lastName" #lname="ngModel">
+                    </label>
+                    <div class="alert" [hidden]="lname.valid || lname.pristine">Last name cannot be left blank!
+                    </div>
+                </div>
+                <div class="gender-group">
+                    <select name="gender" id="gender" required [(ngModel)]="gender">
+                        <option value="" selected disabled>Select gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <span class="down-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                            fill="currentColor">
+                            <path d="M0 0h24v24H0z" fill="none" />
+                            <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+                        </svg>
+                    </span>
+                </div>
+                <div class="country-group">
+                    <select name="countryId" id="countryId" required [(ngModel)]="countryId"
+                        (change)="changeStates(countryId)">
+                        <option value="0" disabled>Select country</option>
+                        <option *ngFor="let item of countryList" value="{{+item.countryId}}">
+                            {{item.countryName | titlecase}}
+                        </option>
+                    </select>
+                    <span class="down-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                            fill="currentColor">
+                            <path d="M0 0h24v24H0z" fill="none" />
+                            <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+                        </svg>
+                    </span>
+                </div>
+                <div class="state-group">
+                    <select name="stateId" id="stateId" required [(ngModel)]="stateId">
+                        <option value="0" disabled>Select state</option>
+                        <option *ngFor="let item of stateList" value="{{+item.stateId}}">{{item.stateName |
+                            titlecase}}
+                        </option>
+                    </select>
+                    <span class="down-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                            fill="currentColor">
+                            <path d="M0 0h24v24H0z" fill="none" />
+                            <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+                        </svg>
+                    </span>
+                </div>
+                <button type="submit" class="save-btn" [disabled]="!profile.form.valid || !profile.form.dirty"
+                    [ngClass]="{'loading-btn':isBtnClicked}">Save</button>
+            </form>
+            <h5 *ngIf="success" class="success">
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                        fill="currentColor">
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                    </svg>
+                </span>
+                <span>Profile details saved successfully!</span>
+            </h5>
+        </div>
+        <div *ngIf="selectedMenu=='academic'" class="academic-profile">
+            <form (ngSubmit)="onAcademicSubmit(academic)" #academic="ngForm" ngNativeValidate autocomplete="off">
+                <div class="category-group">
+                    <select name="categoryName" id="categoryName" required [(ngModel)]="categoryName"
+                        (change)="changeSubCategories(categoryName)">
+                        <option value="" disabled>Select Main Category</option>
+                        <option *ngFor="let item of categoryList" value="{{item.mainClass}}">{{item.mainClass}}</option>
+                    </select>
+                    <span class="down-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                            fill="currentColor">
+                            <path d="M0 0h24v24H0z" fill="none" />
+                            <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+                        </svg>
+                    </span>
+                </div>
+                <div class="subcat-group">
+                    <select name="classId" id="classId" required [(ngModel)]="classId">
+                        <option value="null" disabled>Select Sub Category</option>
+                        <option *ngFor="let item of subcatList" value="{{+item.classId}}">{{item.subClass}}</option>
+                    </select>
+                    <span class="down-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                            fill="currentColor">
+                            <path d="M0 0h24v24H0z" fill="none" />
+                            <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+                        </svg>
+                    </span>
+                </div>
+                <div class="subjects-group">
+                    <div>
+                        <span>Please enter your interested subjects</span>
+                        <button type="button" class="info">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                                fill="currentColor">
+                                <path d="M0 0h24v24H0V0z" fill="none" />
+                                <path
+                                    d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+                            </svg>
+                        </button>
+                        <span>Interested subjects are comma separated values</span>
+                    </div>
+                    <textarea name="interestedSubjects" id="interestedSubjects" rows="5" [ngModel]="interestedSubjects"
+                        placeholder="English, Mathematics, Science, etc" required></textarea>
+                </div>
+                <button type="submit" class="save-btn" [ngClass]="{'loading-btn':isBtnClicked}"
+                    [disabled]="!academic.form.valid || !academic.form.dirty">Save</button>
+            </form>
+            <h5 *ngIf="academicSuccess" class="success">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                    fill="currentColor">
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                </svg>
+                <span>Academic profile details saved successfully!</span>
+            </h5>
+        </div>
+        <div *ngIf="selectedMenu=='pass'" class="pass-profile">
+            <app-change-password></app-change-password>
+        </div>
+        <div *ngIf="selectedMenu=='email'" class="email-profile">
+            <!-- <app-change-email></app-change-email> -->
+        </div>
+        <div *ngIf="selectedMenu=='phone'" class="phone-profile">
+            <!-- <app-change-phone></app-change-phone> -->
+        </div>
+    </div>
+</section>

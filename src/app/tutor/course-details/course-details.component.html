@@ -1,0 +1,99 @@
+<mat-drawer-container class="example-container">
+    <mat-drawer mode="side" opened class="dra-crt">
+        <app-tutor-sidenav></app-tutor-sidenav>
+    </mat-drawer>
+    <mat-drawer-content style="background-color: #eeeeee;">
+        <div class="p-4">
+            <mat-card>
+                <mat-card-title class="course-title p-3">Course Details Page</mat-card-title>
+                <div class="p-3">
+                    <div>
+                        <div>
+                            <span class="course-subtitle">Course title</span>
+                        </div>
+                        <mat-form-field class="example-full-width" appearance="outline">
+                            <input matInput placeholder="test course1">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <div>
+                            <span class="course-subtitle">Course subtitle</span>
+                        </div>
+                        <mat-form-field class="example-full-width" appearance="outline">
+                            <input matInput placeholder="Insert your course description">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <div>
+                            <span class="course-subtitle">Course description</span>
+                        </div>
+                        <mat-form-field class="example-full-width" appearance="outline">
+                            <textarea matInput placeholder="First Name"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <div>
+                            <span class="course-subtitle">Basic Info</span>
+                        </div>
+                        <div fxLayout="row wrap">
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="33" fxFlex.lg="33" fxFlex.xl="33" class="p-2">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <mat-select matNativeControl required placeholder="-- Select Level --">
+                                        <mat-option value="saab">Saab</mat-option>
+                                        <mat-option value="mercedes">Mercedes</mat-option>
+                                        <mat-option value="audi">Audi</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="33" fxFlex.lg="33" fxFlex.xl="33" class="p-2">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <mat-select matNativeControl required placeholder="-- Select Category --">
+                                        <mat-option value="saab">Saab</mat-option>
+                                        <mat-option value="mercedes">Mercedes</mat-option>
+                                        <mat-option value="audi">Audi</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="33" fxFlex.lg="33" fxFlex.xl="33" class="p-2">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <mat-select matNativeControl required placeholder="-- Select Subcategory --">
+                                        <mat-option value="saab">Saab</mat-option>
+                                        <mat-option value="mercedes">Mercedes</mat-option>
+                                        <mat-option value="audi">Audi</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="33" fxFlex.lg="33" fxFlex.xl="33" class="p-2">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <mat-select matNativeControl required placeholder="-- Select teaching language --">
+                                        <mat-option value="saab">Saab</mat-option>
+                                        <mat-option value="mercedes">Mercedes</mat-option>
+                                        <mat-option value="audi">Audi</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="33" fxFlex.lg="33" fxFlex.xl="33" class="p-2">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <mat-select matNativeControl required placeholder="-- Select Max No Of Students --">
+                                        <mat-option value="saab">Saab</mat-option>
+                                        <mat-option value="mercedes">Mercedes</mat-option>
+                                        <mat-option value="audi">Audi</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="33" fxFlex.lg="33" fxFlex.xl="33" class="p-2">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <mat-select matNativeControl required placeholder="-- Are You Providing Notes? --">
+                                        <mat-option value="saab">Saab</mat-option>
+                                        <mat-option value="mercedes">Mercedes</mat-option>
+                                        <mat-option value="audi">Audi</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

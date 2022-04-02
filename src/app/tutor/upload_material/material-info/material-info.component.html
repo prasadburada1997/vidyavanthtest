@@ -1,0 +1,61 @@
+<div class="container">
+    <div fxLayout="row" class="pl-3 pt-5 pb-3">
+        <span class="title">UPLOAD MATERIAL</span>
+    </div>
+    <div fxLayout="row wrap">
+        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="100" fxFlex.lg="100" fxFlex.xl="100" class="p-3">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Material Name</mat-label>
+                <input matInput #matname maxlength="120" placeholder="Material Name">
+                <span matSuffix class="input_count">{{matname.value.length}} / 120</span>
+            </mat-form-field>
+        </div>
+        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50" class="p-3">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Main Class</mat-label>
+                <input matInput placeholder="main Class ">
+            </mat-form-field>
+        </div>
+        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50" class="p-3">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Sub Class</mat-label>
+                <input  matInput  placeholder="sub Class">
+            </mat-form-field>
+        </div>
+        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="100" fxFlex.lg="100" fxFlex.xl="100" class="p-3">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>For whom </mat-label>
+                <input matInput #forwhom maxlength="120" placeholder="For whom">
+                <span matSuffix class="input_count">{{forwhom.value.length}} / 120</span>
+            </mat-form-field>
+        </div>
+        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="100" fxFlex.lg="100" fxFlex.xl="100" class="p-3">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Description </mat-label>
+                <textarea matInput #description maxlength="1000" matInput placeholder="Description"></textarea>
+                <span matSuffix class="input_count">{{description.value.length}} / 1000</span>
+            </mat-form-field>
+        </div>
+        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50" class="p-3">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Type </mat-label>
+                <input matInput placeholder="Type">
+            </mat-form-field>
+        </div>
+        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50" class="p-3">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Price </mat-label>
+                <input matInput placeholder="Price" >
+            </mat-form-field>
+        </div>
+        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="70" fxFlex.lg="70" fxFlex.xl="70" class="p-3">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>File Name</mat-label>
+                <input matInput placeholder="File Name">
+            </mat-form-field>
+        </div>
+        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="30" fxFlex.lg="30" fxFlex.xl="30" class="p-3 prd_btn">
+           <button mat-button class="mat-btn">Upload</button>
+        </div>
+    </div>
+</div>

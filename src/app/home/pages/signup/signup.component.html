@@ -1,0 +1,170 @@
+<div class="header-wrapper" [style.marginTop]="showOTP && '6rem'">
+    <h1 class="header">{{header}}</h1>
+</div>
+
+<div *ngIf="!showOTP" class="signup-container">
+    <form (ngSubmit)="onSubmit(signup)" #signup="ngForm" ngNativeValidate autocomplete="off">
+        <div class="type-group form-group">
+            <input type="radio" name="userType" id="student" [value]="1" [(ngModel)]="userType">
+            <label for="student" title="Student">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                    fill="currentColor">
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" />
+                </svg>
+                <span>I am a student</span>
+            </label>
+            <input type="radio" name="userType" id="tutor" [value]="2" [(ngModel)]="userType">
+            <label for="tutor" title="Tutor">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                    fill="currentColor">
+                    <path d="M0 0h24v24H0zm10 5h4v2h-4zm0 0h4v2h-4z" fill="none" />
+                    <path
+                        d="M10 16v-1H3.01L3 19c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2v-4h-7v1h-4zm10-9h-4.01V5l-2-2h-4l-2 2v2H4c-1.1 0-2 .9-2 2v3c0 1.11.89 2 2 2h6v-2h4v2h6c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm-6 0h-4V5h4v2z" />
+                </svg>
+                <span>I am a tutor</span>
+            </label>
+        </div>
+        <div class="name-group form-group">
+            <label for="firstName">
+                <span class="name-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                        fill="currentColor">
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path
+                            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                    </svg>
+                </span>
+                <input type="text" name="firstName" id="firstName" placeholder="First name" required ngModel
+                    #firstName="ngModel">
+            </label>
+            <div class="alert" [hidden]="firstName.valid || firstName.pristine">First name is required!</div>
+            <label for="lastName">
+                <span class="name-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                        fill="currentColor">
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path
+                            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                    </svg>
+                </span>
+                <input type="text" name="lastName" id="lastName" placeholder="Last name" required ngModel
+                    #lastName="ngModel">
+            </label>
+            <div class="alert" [hidden]="lastName.valid || lastName.pristine">Last name is required!</div>
+        </div>
+        <div class="phone-group form-group">
+            <label for="phone">
+                <span class="phone-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                        fill="currentColor">
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path
+                            d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                    </svg>
+                </span>
+                <input type="number" name="phoneNumber" id="phone" placeholder="Phone number" required ngModel
+                    #phoneNumber="ngModel" pattern="^[0-9]{10}$" (input)="duplicatePhone = false">
+            </label>
+            <div class="alert" [hidden]="phoneNumber.valid || phoneNumber.pristine">Enter valid 10 digit phone number!
+            </div>
+            <div class="alert" [hidden]="!duplicatePhone">This phone number is already registered!</div>
+        </div>
+        <div class="form-group email-group">
+            <label for="email">
+                <span class="mail-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                        fill="currentColor">
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path
+                            d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                    </svg>
+                </span>
+                <input type="email" name="email" id="email" placeholder="Email ID" required [(ngModel)]="email"
+                    #mail="ngModel" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" (input)="duplicateEmail = false">
+            </label>
+            <div class="alert" [hidden]="mail.valid || mail.pristine">Enter a valid Email ID!</div>
+            <div class="alert" [hidden]="!duplicateEmail">This email ID is already registered!</div>
+        </div>
+        <div class="password-group form-group">
+            <label for="password">
+                <span class="pass-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                        fill="currentColor">
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path
+                            d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
+                    </svg>
+                </span>
+                <input type="{{isPasswordVisible?'text':'password'}}" name="password" id="password"
+                    placeholder="Password" required ngModel #password="ngModel" pattern="^.{8,}">
+                <span class="visibility" (click)="showHidePassword()">
+                    <svg xmlns="http://www.w3.org/2000/svg" *ngIf="!isPasswordVisible" class="visible-off" height="24px"
+                        viewBox="0 0 24 24" width="24px" fill="currentColor">
+                        <path d="M0 0h24v24H0zm0 0h24v24H0zm0 0h24v24H0zm0 0h24v24H0z" fill="none" />
+                        <path
+                            d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" *ngIf="isPasswordVisible" class="visible-on" height="24px"
+                        viewBox="0 0 24 24" width="24px" fill="currentColor">
+                        <path
+                            d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" />
+                    </svg>
+                </span>
+            </label>
+            <div class="alert" [hidden]="password.valid || password.pristine">Password
+                should be at least 8 characters!</div>
+        </div>
+        <div class="form-group gender-group">
+            <select name="gender" id="gender" required [(ngModel)]="gender">
+                <option value="" selected disabled>Select gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+            <span class="down-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                    fill="currentColor">
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+                </svg>
+            </span>
+        </div>
+        <div class="form-group country-group">
+            <select name="countryId" id="country" required [(ngModel)]="countryId" (change)="changeStates(countryId)">
+                <option value="" selected disabled>Select country</option>
+                <option *ngFor="let item of countryList" value="{{+item.countryId}}">{{item.countryName | titlecase}}
+                </option>
+            </select>
+            <span class="down-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                    fill="currentColor">
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+                </svg>
+            </span>
+        </div>
+        <div class="form-group state-group">
+            <select name="stateId" id="state" required [(ngModel)]="stateId">
+                <option *ngFor="let item of stateList" value="{{+item.stateId}}">{{item.stateName | titlecase}}</option>
+                <option value="" selected disabled>Select state</option>
+            </select>
+            <span class="down-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                    fill="currentColor">
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+                </svg>
+            </span>
+        </div>
+        <button type="submit" class="submit-btn" [disabled]="!signup.form.valid"
+            [ngClass]="{'loading-btn':isBtnClicked}">Sign Up</button>
+    </form>
+    <span class="terms-policy">By signing up, you agree to our
+        <a routerLink='/terms-conditions'>Terms of Use</a> and
+        <a routerLink='/privacy-policy'>Privacy Policy</a>.
+    </span>
+    <span class="login-wrapper">Already have an account?<a routerLink='/login'> Log In</a></span>
+</div>
+
+<app-otp *ngIf="showOTP" (otpSubmitted)="otpSubmitted()" class="otp-wrapper"></app-otp>
